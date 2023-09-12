@@ -1,5 +1,7 @@
 # Carbon Footprint Project setup
 
+> prerequisites : Visual Studio Code Editor (https://code.visualstudio.com/)
+
 1) Install kaikas chrome extension (https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi) if you dont have already
 2)  and make sure you have test coins to try (https://baobab.wallet.klaytn.foundation/faucet)
 3) Copy the solidity contract from `contracts` folder and deploy to klaytn baobab network using remix ide (https://remix.ethereum.org/?#activate=klaytn-remix-plugin)
