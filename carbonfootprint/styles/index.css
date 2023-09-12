@@ -1,0 +1,23 @@
+.jumbotron {
+    background-image: url('../images/title_banner.png');
+}
+
+#adv_banner {
+    background-size: 100%;
+    width: 100%;
+}
+
+.selectpicker{
+    background-color: lightgray;
+}
+
+#emissionData > tr > td > div {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+
+    background: green;
+    color: #FFF;
+    text-align: center;
+}

@@ -1,0 +1,494 @@
+<html>
+    <head>
+        <title>Klaytn | Carbon Footprint Workshop</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/caver-js/1.10.2/caver.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/caver-js/1.6.8/caver.min.js" integrity="sha512-ym+bAE5ZPv2aH6IwVqTFi4hWtwmMpOVDJTqCpI2m/0/7L5nD8AWpdg4dC5C92xu245/k3gs2MG4qKEC9M4WrNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.1.1/web3.min.js"></script> -->
+        <link rel="stylesheet" href="./styles/index.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class="navbar-brand" href="#" style="font-size: 12px;">
+                <div style="width: 100px;">
+                    <img src="./images/logo.png" alt="logo" style="width:100%;"> 
+                    <div style="text-align: right;">Workshop</div>
+                </div>
+              
+            </a>
+            <ul class="navbar-nav nav">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tracker">Emission Tracker</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#reports">Reports</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav" style="margin-left: auto;">
+                <li>
+                    <div class="btn-nav" style="margin-right: 20px;">
+                        <a data-toggle="tab" class="btn btn-small navbar-btn" style="background-color: rgb(255, 102, 0); color: #FFF;" id="walletAddress" onclick="connectWallet()">Connect Wallet</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav" style="margin-left: 10px">
+                <li>
+                    <div class="btn-nav" style="margin-right: 20px;">
+                        <a data-toggle="tab" class="btn btn-small navbar-btn" style="background-color: rgb(255, 102, 0); color: #FFF;" href="#reports" onclick="$(this).hide();">START CALCULATING</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <article style="margin-bottom: 100px; margin-top: 120px;">
+            <div class="tab-content">
+                <div id="tracker" class="tab-pane fade active show">
+                    <div class="container">
+                        <div class="jumbotron">
+                          <h3 style="color: #000;">Carbon Footprint</h3>
+                          <p style="font-size: 20px; font-weight: 300; color: #000;">To calculate your emissions, Please check the below source cards that apply to your organization.</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4" style="border-right: 1px solid lightgray;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        Emissions from things you own or control
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 30px; color: rgb(255, 102, 0)">
+                                    <div class="col-md-12">
+                                        Scope 1
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Stationary Combustion</div>
+                                                <div style="margin-top: 10px;">
+                                                    Fuel-like oil and gas-burned in buildings or equipment owned or operated by your organization.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Mobile sources</div>
+                                                <div style="margin-top: 10px;">
+                                                    Fuel your organization purchases for owned or leased vehicles and mobile equipment (e.g., cars, trucks, gas-powered tools).
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Fugitive emissions - Refrigeration</div>
+                                                <div style="margin-top: 10px;">
+                                                    Chemical releases from AC and refrigeration equipment your organization owns or controls.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Fugitive emissions - Fire suppression</div>
+                                                <div style="margin-top: 10px;">
+                                                    Chemical releases from or use of building fire suppression systems or equipment (like fire extinguishers) your organization owns or controls.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        Emissions outside your direct control
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 30px; color: rgb(255, 102, 0);">
+                                    <div class="col-md-12">
+                                        Scope 2
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased electricity</div>
+                                                <div style="margin-top: 10px;">
+                                                    Electricity your organization buys from a utility company or another supplier.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased steam, heat and cooling</div>
+                                                <div style="margin-top: 10px;">
+                                                    Steam, heat and cooling generated off-site used in buildings or processes your organization owns or controls.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-12" style="visibility: hidden;">
+                                        .
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 30px; color: rgb(255, 102, 0);">
+                                    <div class="col-md-12">
+                                        Scope 3
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Employee commuting</div>
+                                                <div style="margin-top: 10px;">
+                                                    Modes of transportation except company owned vehicles (e.g., executive car, shuttle) used to get to and from work.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Commuting - Home office equipment</div>
+                                                <div style="margin-top: 10px;">
+                                                    Equipment owned by your organization or employees to perform work activities remotely. This can include home heating, cooling and lighting.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Business Travel</div>
+                                                <div style="margin-top: 10px;">
+                                                    Non-commuting travel via commercial planes, trains, taxis, rental cars and personal vehicles.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased goods and services - Office equipment and supplies</div>
+                                                <div style="margin-top: 10px;">
+                                                    Office supplies, furniture and IT equipment your organization purchases.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased goods and services - Professional services</div>
+                                                <div style="margin-top: 10px;">
+                                                    Professional and support services - for example, legal counsel, technical services or waste management.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased goods and services - Online services</div>
+                                                <div style="margin-top: 10px;">
+                                                    Outsourced telecom and information services - for example, data processing for your website.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border: 1px solid rgb(255, 102, 0);
+                                            border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Purchased goods and services - Other</div>
+                                                <div style="margin-top: 10px;">
+                                                    Purchased goods or services not covered by other categories and excluding product or packaging related goods.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Waste generated in operations</div>
+                                                <div style="margin-top: 10px;">
+                                                    Any waste your organization generates trash, recycling, compost etc.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 15px;">
+                                        <div style="word-wrap: break-word; 
+                                            border-radius: 5px; 
+                                            height: 150px;
+                                            box-shadow: 2px 2px 10px #888888;">
+                                            <div style="padding: 10px;">
+                                                <div>Upstream leased assets - Facilities</div>
+                                                <div style="margin-top: 10px;">
+                                                    Energy your organization uses but does not control in leased buildings (e.g., building owner controls lights and temperature).
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="reports" class="tab-pane fade">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="dropdown show" style="float: right; margin-bottom: 20px;">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="selectedYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="selectedYear" id="years">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h3>Emission Tracker</h3>
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-6">
+                                <div class="card" id="chart1">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <img src="../images/side_banner.jpg" id="adv_banner" />
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 5px; border: 1px solid lightgrey;">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="padding: 20px;">
+                                                    <div>TOTAL EMISSIONS</div>
+                                                    <div class="row" style="margin-top: 5px;">
+                                                        <div class="col-md-8">
+                                                            <h4 id="totalEmissions"></h4>
+                                                            <span style="font-size: 12px; color: grey;">metric tons (MT)</span>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <img src="./images/icon_co2e.png" style="width: 50px;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="padding: 20px;">
+                                                    <div>NET EMISSIONS</div>
+                                                    <div class="row" style="margin-top: 5px;">
+                                                        <div class="col-md-8">
+                                                            <h4 id="netEmissions"></h4>
+                                                            <span style="font-size: 12px; color: grey;">metric tons (MT)</span>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <img src="./images/icon_co2e.png" style="width: 50px;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 5px;">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <img src="../images/side_banner1.png" id="adv_banner" />
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px; font-size: 12px; color: grey;">
+                            <div class="col-md-12">
+                                Track your carbon and other emissions each month to see your impact. Click "+" to calculate or input date for each source and period (in MT CO2e).
+                                <br/>
+                                To see an immediate impact, purchase offsets for each emissions source.
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-12">
+                                <div class="dropdown show" style="float: right; margin-bottom: 20px;">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        6 months
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item selectpicker" href="#">6 months</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12" style="padding-right: 0px;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" style="width: 10px;">Scope</th>
+                                        <th scope="col" style="width: 200px;">Contributor</th>
+                                        <th scope="col" style="display: none;">Jan</th>
+                                        <th scope="col" style="display: none;">Feb</th>
+                                        <th scope="col" style="display: none;">Mar</th>
+                                        <th scope="col" style="display: none;">Apr</th>
+                                        <th scope="col" style="display: none;">May</th>
+                                        <th scope="col" style="display: none;">Jun</th>
+                                        <th scope="col">Jul</th>
+                                        <th scope="col">Aug</th>
+                                        <th scope="col">Sep</th>
+                                        <th scope="col">Oct</th>
+                                        <th scope="col">Nov</th>
+                                        <th scope="col">Dec</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Offsets</th>
+                                        <th scope="col">Net</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="emissionData">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- The Modal start -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title" id="modalTitle"></h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div id="modalScopeId" style="visibility: hidden;"></div>
+                                <div id="modalMonthId" style="visibility: hidden;"></div>
+                                <div id="modalScopeType" style="visibility: hidden;"></div>
+                                <div>
+                                    <h6 id="modalMonthTitle"></h6>
+                                </div>
+                                <div id="modalMonthTitleDesc" style="font-size: 12px; color: grey;">
+                                </div>
+                                <br/><br/>
+                                <div class="form-group">
+                                    <label for="activityInput">Total facility used for the month (kWh):</label>
+                                    <input type="text" class="form-control" id="activityInput">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="activityOffsetInput">Renewable energy - excluding offsets for the month (kWh):</label>
+                                    <input type="text" class="form-control" id="activityOffsetInput">
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="calculate()">Calculate</button>
+                                <br/><br/>
+                                <div style="font-size: 14px; color: grey;">
+                                    Emission Factor = <span id="emissionFactor"></span> kgs CO2e per kWh
+                                </div>
+                                <br/>
+                                <div style="font-size: 14px; color: grey;">
+                                    Activity Data * Emission Factor = GHG Emissions
+                                </div>
+                                <br/><br/>
+                                <div class="form-group">
+                                    <label for="activityOutput">Calculated MT CO2e:</label>
+                                    <input disabled type="text" class="form-control" id="activityOutput">
+                                </div>
+                                <div style="font-size: 12px; color: grey;">
+                                    Calculators reference the GHG Protocol Corporate Standard, <a href="https://www.epa.gov/system/files/documents/2023-03/ghg_emission_factors_hub.pdf">EPA</a> guidelines and other leading frameworks.
+                                </div>
+                                <br/>
+                                <div id="modalTxnHash" style="font-size: 12px;"></div>
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="upsertReport()">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+                            </div>
+                            
+                        </div>  
+                        </div>
+                    </div>
+                    <!-- The Modal end -->
+                </div>
+            </div>
+        </article>
+        <script src="./js/index.js"></script>
+        <script src="./js/blockchain.js"></script>
+    </body>
+</html>
