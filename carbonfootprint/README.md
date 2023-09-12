@@ -1,4 +1,4 @@
-# Project setup
+# Carbon Footprint Project setup
 
 1) Install kaikas chrome extension (https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi) if you dont have already
 2)  and make sure you have test coins to try (https://baobab.wallet.klaytn.foundation/faucet)
