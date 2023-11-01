@@ -5,4 +5,4 @@ E-Cert
 3. npm start
 4. Application should be available on http://localhost:3001
 
-Note: Used nodejs v18.18.2
+Note: Used nodejs v18.18.2 or latest
