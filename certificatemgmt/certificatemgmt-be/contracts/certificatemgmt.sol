@@ -18,6 +18,8 @@ contract CertificateMgmt {
 
     mapping(string => Certificate) certificates;
 
+    event CertificateRegistered(string indexed rollNumber, string indexed certificateHash, uint score);
+
     // constructor
     constructor() {
         owner = msg.sender;
@@ -39,6 +41,7 @@ contract CertificateMgmt {
                 certificateHash,
                 isValid
             );
+        emit CertificateRegistered(rollNumber, certificateHash, score);
     }
 
     // verifyCertificate
