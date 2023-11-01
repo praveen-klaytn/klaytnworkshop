@@ -33,16 +33,12 @@ service.registerCertificate = async (certifiedTo, rollNumber, score, certifiedBy
 
 service.verifyCertificate = async (certificateHash) => {
     // can call by any one
-    const account = provider.eth.accounts.privateKeyToAccount(process.env.ADMIN_PRIVATE_KEY);
-    provider.eth.accounts.wallet.add(account);
-    provider.eth.defaultAccount = account.address;
 
     const contract = new provider.eth.Contract(CONTRACT_ABI, process.env.CONTRACT_ADDRESS)
-    // let gasPrice = await provider.eth.getGasPrice();
     let eventData = await contract.methods
         .verifyCertificate(certificateHash)
-        .call({ from: account.address });
-    return eventData;
+        .call({ });
+    return eventData
 }
 
 module.exports = service;
